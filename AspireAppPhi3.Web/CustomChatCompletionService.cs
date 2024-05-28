@@ -21,14 +21,14 @@ namespace AspirePhi3App.Web.Components.Chatbot
             {
                 if (message.Role == AuthorRole.Assistant)
                 {
-                    await chat.SendAs(OllamaSharp.Models.Chat.ChatRole.Assistant, message.Content);
+                    await chat.SendAs(OllamaSharp.Models.Chat.ChatRole.Assistant, message?.Content ?? string.Empty);
                     continue;
                 }
             }
 
             var lastMessage = chatHistory.LastOrDefault();
 
-            var history = (await chat.Send(lastMessage.Content, CancellationToken.None)).ToArray();
+            var history = (await chat.Send(lastMessage?.Content ?? string.Empty, CancellationToken.None)).ToArray();
 
             var chatResponse = history.Last().Content;
 

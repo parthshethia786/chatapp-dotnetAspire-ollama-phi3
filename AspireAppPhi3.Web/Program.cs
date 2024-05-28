@@ -17,12 +17,12 @@ builder.Services.AddHttpClient<WeatherApiClient>(client =>
         client.BaseAddress = new("https+http://apiservice");
     });
 
+// Add kernel and Register the custom chat completion service
 var customChatCompletionService = new CustomChatCompletionService()
 {
     ModelName = "phi3",
     ModelUrl = "http://localhost:11434"
 };
-
 builder.Services.AddKernel();
 builder.Services.AddKeyedSingleton<IChatCompletionService>("CustomChatCompletionService", customChatCompletionService);
 
