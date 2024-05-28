@@ -17,6 +17,7 @@ Let’s download Ollama, run any model locally and interact with it using comman
   - Check out all available models at https://ollama.com/library 
 - Once the model files are downloaded, you can run the model using command:
   - <code>ollama run phi3:3.8b</code>
+  - ![alt text](https://github.com/parthshethia786/chatapp-dotnetAspire-ollama-phi3/blob/master/Phi-3%20running%20locally.png)
  
 **Step 2:** 
 
