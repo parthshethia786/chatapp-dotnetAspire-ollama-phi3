@@ -1,12 +1,12 @@
 using AspireAppPhi3.Web;
 using AspireAppPhi3.Web.Components;
+using AspirePhi3App.Web.Components.Chatbot;
+using Microsoft.SemanticKernel.ChatCompletion;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add service defaults & Aspire components.
 builder.AddServiceDefaults();
 
-// Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
@@ -14,17 +14,23 @@ builder.Services.AddOutputCache();
 
 builder.Services.AddHttpClient<WeatherApiClient>(client =>
     {
-        // This URL uses "https+http://" to indicate HTTPS is preferred over HTTP.
-        // Learn more about service discovery scheme resolution at https://aka.ms/dotnet/sdschemes.
         client.BaseAddress = new("https+http://apiservice");
     });
+
+var customChatCompletionService = new CustomChatCompletionService()
+{
+    ModelName = "phi3",
+    ModelUrl = "http://localhost:11434"
+};
+
+builder.Services.AddKernel();
+builder.Services.AddKeyedSingleton<IChatCompletionService>("CustomChatCompletionService", customChatCompletionService);
 
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
