@@ -1,3 +1,5 @@
+![alt text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOW85eWU5eWEydjR3Z2pjdW52d2hweXI4cHhib2JjZXBkd3c4a2oxZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QgPYxDDAcitVJ3DEX5/giphy.gif)
+
 Below is the step-by-step guide to run the application locally.
 
 **Prerequisites:**
